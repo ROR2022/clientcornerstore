@@ -4,7 +4,7 @@ import * as yup from 'yup';
 import { Form, Button, Row, Col, InputGroup, Spinner, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { FaRegUserCircle } from 'react-icons/fa';
 import { useRouter } from 'next/navigation';
-import { useSearchParams } from 'next/navigation'
+//import { useSearchParams } from 'next/navigation'
 import { useContext } from 'react';
 import MyContext from '@/context/MyContext';
 import { registerUser } from '@/api/apiUsers';
@@ -48,12 +48,15 @@ const SignUpClient:FC<SignUpClientProps> = ({emailUser, emailBusinessOwner}) => 
         ...initDataFormUser,
         email: emailUser || 'lupedelgado313@yahoo.com',
     };
-    const searchParams = useSearchParams();
-    const userRoleId = searchParams.get('user');
+    //const searchParams = useSearchParams();
+    //const userRoleId = searchParams.get('user');
+    const [userRoleId, setUserRoleId] = useState('');
 
     useEffect(() => {
         //console.log('stateSelected:...', stateSelected);
-        console.log('userRoleId:...', userRoleId);
+        const searchParams = new URLSearchParams(window.location.search);
+        setUserRoleId(searchParams.get('user') || '');
+        //console.log('userRoleId:...', userRoleId);
     }, [])
 
     useEffect(() => {

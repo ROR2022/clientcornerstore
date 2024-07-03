@@ -106,7 +106,7 @@ const CheckoutForm:FC<CheckoutFormProps>=({ emailBO, dataIdSale})=> {
   }
   }, [stripe]);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e:any) => {
     e.preventDefault();
 
     if (!stripe || !elements) {

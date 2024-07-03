@@ -11,7 +11,7 @@ import { AiOutlineCamera } from 'react-icons/ai';
 import { FaSearch } from 'react-icons/fa';
 import ModalScanCode from '@/components/Product/ModalScanCode';
 import ModalSearchProduct from '@/components/Product/ModalSearchProduct';
-import { useSearchParams } from 'next/navigation';
+//import { useSearchParams } from 'next/navigation';
 import CardShoppingCart from '../ShowProfile/CardShoppingCart';
 import { getProductById } from '@/api/apiProduct';
 //importar el icono de close para cerrar el modal de react-icons
@@ -35,8 +35,15 @@ const FormSaleBranch = () => {
     const [showModalPayment, setShowModalPayment] = useState(false);
     const [total, setTotal] = useState(0);
     const [dataSale, setDataSale] = useState<any>({});
-    const searchParams = useSearchParams();
-    const emailUser = searchParams.get('businessOwner') || '';
+    const [emailUser, setEmailUser] = useState('');
+    //const searchParams = useSearchParams();
+    //const emailUser = searchParams.get('businessOwner') || '';
+
+    useEffect(() => {
+      const searchParams = new URLSearchParams(window.location.search);
+        setEmailUser(searchParams.get('businessOwner') || '');
+    }, []);
+
     useEffect(() => {
         //console.log('dataLocalStorage:..',dataLocalStorage);
     }, [dataLocalStorage]);

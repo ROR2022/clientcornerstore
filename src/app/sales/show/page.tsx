@@ -1,6 +1,8 @@
 "use client";
 import React from 'react'
-import ShowSales from '@/components/Sales/ShowSales/ShowSales';
+import dynamic from 'next/dynamic';
+const ShowSales = dynamic(() => import('@/components/Sales/ShowSales/ShowSales'), { ssr: false });
+//import ShowSales from '@/components/Sales/ShowSales/ShowSales';
 
 const page = () => {
   return (

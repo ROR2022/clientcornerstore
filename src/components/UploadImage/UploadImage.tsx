@@ -47,7 +47,7 @@ const UploadImage: FC<UploadImageProps> = ({setDataImg, dataImg}) => {
 
 
   const deleteImage = (blob:any) => {
-    setImages(images.filter((x) => x !== blob));
+    setImages(images.filter((x:any) => x !== blob));
     setDataImg(null);
   };
 

@@ -20,7 +20,7 @@ const SelectCity = dynamic(() => import('@/components/SignUp/SelectCity'), { ssr
 const SelectState = dynamic(() => import('@/components/SignUp/SelectState'), { ssr: false })
 const SelectBusinessCategory = dynamic(() => import('@/components/BusinessOwner/Profile/SelectBusinessCategory'), { ssr: false })
 import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
+//import { useSearchParams } from 'next/navigation';
 
 
 
@@ -67,12 +67,15 @@ const SignUp: FC<SignUpProps> = ({ emailUser }) => {
         ...initDataFormUser,
         email: emailUser || 'lupedelgado313@yahoo.com',
     };
-    const searchParams = useSearchParams();
-    const userRoleId = searchParams.get('user');
+    //const searchParams = useSearchParams();
+    //const userRoleId = searchParams.get('user');
+    const [userRoleId, setUserRoleId] = useState('');
 
     useEffect(() => {
         //console.log('stateSelected:...', stateSelected);
-        console.log('userRoleId:...', userRoleId);
+        const searchParams = new URLSearchParams(window.location.search);
+        setUserRoleId(searchParams.get('user') || '');
+        //console.log('userRoleId:...', userRoleId);
     }, [])
 
     useEffect(() => {

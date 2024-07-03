@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { useSearchParams, useRouter } from "next/navigation";
+import {  useRouter } from "next/navigation";
 import { getProfileUserByEmail } from "@/api/apiUsers";
 import { dataThemeProfile } from "./dataThemeProfile";
 import { Spinner } from "react-bootstrap";
@@ -49,10 +49,12 @@ const initDataBusinessOwner = {
 const basicGoogleUbi = "https://www.google.com/maps/search/?api=1&query=";
 
 const ShowProfile = () => {
-  const searchParams = useSearchParams();
+  //const searchParams = useSearchParams();
   const router = useRouter();
 
-  const emailUser = searchParams.get("email");
+  //const emailUser = searchParams.get("email");
+  const [emailUser, setEmailUser] = useState("");
+  const [searchParams, setSearchParams] = useState<any>(null);
   const [dataBusinessOwner, setDataBusinessOwner] = useState(
     initDataBusinessOwner
   );
@@ -69,6 +71,13 @@ const ShowProfile = () => {
     setDataLocalStorageShoppingCart,
   } = useContext(MyContext);
   const [dataPayment, setDataPayment] = useState<any>(null);
+
+  useEffect(() => {
+    const searchParamsTemp = new URLSearchParams(window.location.search);
+    setSearchParams(searchParamsTemp);
+    const emailUserTemp = searchParamsTemp.get("email");
+    setEmailUser(emailUserTemp || "");
+  }, []);
 
   useEffect(() => {
     console.log("searchParams:...", searchParams.toString());

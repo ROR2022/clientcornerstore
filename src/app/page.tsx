@@ -10,17 +10,22 @@ import MyContext from "@/context/MyContext";
 import { useRouter } from "next/navigation";
 import { getDataBusinessOwnerById } from "@/api/apiUsers";
 import { Spinner } from "react-bootstrap";
-import { useSearchParams } from "next/navigation";
+//import { useSearchParams } from "next/navigation";
 
 const PreHome: FC = () => {
   const { dataLocalStorage } = useContext(MyContext);
+  const [emailBusinessOwner, setEmailBusinessOwner] = useState('');
   const { roleId } = dataLocalStorage;
   const router = useRouter();
   const [loading, setLoading] = useState(false);
-  const searchParams = useSearchParams();
-  const emailBusinessOwner = searchParams.get("businessOwner")||'';
+  //const [params] = useSearchParams();
+  
 
   useEffect(() => {
+    
+  //const emailBusinessOwner = params.get("businessOwner")||'';
+  const searchParams = new URLSearchParams(window.location.search);
+  setEmailBusinessOwner(searchParams.get("businessOwner")||'');
     const {businessOwner} = dataLocalStorage;
     console.log('roleId:..', roleId); 
     if (roleId==='client' ) {

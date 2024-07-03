@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Col, Row } from "react-bootstrap";
 import InputGroup from "react-bootstrap/InputGroup";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Nav } from "react-bootstrap";
 import { Formik } from "formik";
 import * as yup from "yup";
@@ -14,7 +14,7 @@ import { useContext } from "react";
 import { MyContext } from "@/context/MyContext";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
+//import { useSearchParams } from "next/navigation";
 
 const initDataFormUser = {
   email: "",
@@ -29,11 +29,17 @@ const SignIn = () => {
   const [isEmployee, setIsEmployee] = useState(false);
   const { setDataLocalStorage } = useContext(MyContext);
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const emailBusinessOwner = searchParams.get("businessOwner");
+  const [emailBusinessOwner, setEmailBusinessOwner] = useState("");
+  //const searchParams = useSearchParams();
+  //const emailBusinessOwner = searchParams.get("businessOwner");
   //console.log('dataContext:..',dataContext);
 
   //const { Formik } = formik;
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search);
+    setEmailBusinessOwner(searchParams.get("businessOwner") || "");
+  }, []);
 
   const schema = yup.object().shape({
     email: yup

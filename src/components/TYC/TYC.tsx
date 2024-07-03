@@ -66,7 +66,7 @@ const TYC = () => {
                 4. Modifications
             </h5>
             <h6 className='mt-2'>
-                4.1. We reserve the right to modify or replace these terms and conditions at any time. If a revision is material, we will try to provide at least 30 days' notice before any new terms take effect. What constitutes a material change will be determined at our sole discretion.
+                4.1. We reserve the right to modify or replace these terms and conditions at any time. If a revision is material, we will try to provide at least 30 days notice before any new terms take effect. What constitutes a material change will be determined at our sole discretion.
             </h6>
 
             <h5 className='mt-2'>
