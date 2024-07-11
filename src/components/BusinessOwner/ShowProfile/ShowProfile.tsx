@@ -80,12 +80,12 @@ const ShowProfile = () => {
   }, []);
 
   useEffect(() => {
-    console.log("searchParams:...", searchParams.toString());
+    console.log("searchParams:...", searchParams?.toString());
     //extraer de searchParams todos los valores de los parametros y guardarlos en un array temporal
-    const tempSearchParams = searchParams.toString().split("&");
-    const statusPaymentTemp = searchParams.get("redirect_status");
-    const dataIdPaymentIntent = searchParams.get("payment_intent");
-    const dataIdSale = searchParams.get("dataIdSale");
+    const tempSearchParams = searchParams?.toString().split("&");
+    const statusPaymentTemp = searchParams?.get("redirect_status");
+    const dataIdPaymentIntent = searchParams?.get("payment_intent");
+    const dataIdSale = searchParams?.get("dataIdSale");
 
     console.log("statusPayment:...", statusPaymentTemp);
     console.log("tempSearchParams:...", tempSearchParams);
